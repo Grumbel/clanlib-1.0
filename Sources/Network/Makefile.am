@@ -62,6 +62,10 @@ else
 libclanNetwork_la_SOURCES += setupnetwork_unix.cpp
 endif
 
+libclanNetwork_la_LIBADD = \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la
+
 libclanNetwork_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)
 

@@ -2,8 +2,9 @@ lib_LTLIBRARIES = libclanDisplay.la
 
 # FIXME: This needs to be @LIBS@ or @X11LIBS@ or something like that
 if WIN32
+xlibs = 
 else
-libclanDisplay_la_LIBADD = -L/usr/X11R6/lib/ -lX11 -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@
+xlibs = -L/usr/X11R6/lib/ -lX11 -lXmu -lGL -lGLU -lpng -ljpeg -lXxf86vm @X_LIBS@
 endif
 
 libclanDisplay_la_SOURCES = \
@@ -116,6 +117,11 @@ Win32/input_device_win32keyboard.h \
 Win32/input_device_win32mouse.cpp \
 Win32/input_device_win32mouse.h
 endif
+
+libclanDisplay_la_LIBADD = \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la \
+  $(xlibs)
 
 libclanDisplay_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)

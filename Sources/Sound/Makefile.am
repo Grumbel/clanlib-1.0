@@ -48,6 +48,10 @@ SoundProviders/Unix/soundprovider_recorder_oss.cpp \
 SoundProviders/Unix/soundprovider_recorder_oss.h
 endif
 
+libclanSound_la_LIBADD = \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la
+
 libclanSound_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE) \
   $(SOUND_LDFLAGS)

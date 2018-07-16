@@ -92,7 +92,10 @@ deck.cpp \
 deck_generic.h \
 deck_generic.cpp
 
-
+libclanGUI_la_LIBADD = \
+  ../Display/libclanDisplay.la \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la
 
 libclanGUI_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)

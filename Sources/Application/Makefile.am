@@ -6,6 +6,10 @@ else
 libclanApp_la_SOURCES = Unix/clanapp.cpp
 endif
 
+libclanApp_la_LIBADD = \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la
+
 libclanApp_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)
 

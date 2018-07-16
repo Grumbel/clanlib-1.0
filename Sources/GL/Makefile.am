@@ -34,6 +34,7 @@ if WIN32
 libclanGL_la_SOURCES += \
 WGL/display_window_opengl.h \
 WGL/display_window_opengl.cpp
+xlibs =
 else
 libclanGL_la_SOURCES += \
 GLX/display_window_opengl.h \
@@ -58,13 +59,19 @@ GLX/input_device_x11keyboard.cpp \
 GLX/input_device_x11keyboard.h \
 GLX/input_device_xinput.cpp \
 GLX/input_device_xinput.h
-libclanGL_la_LIBADD = -lXxf86vm -lXi -lGLU -lGL 
+xlibs = -lXxf86vm -lXi -lGLU -lGL
 endif
 
 EXTRA_DIST = \
  WGL/displaycard_opengl_win32.cpp \
  WGL/displaycard_opengl_win32.h   \
  WGL/setupgl_win32.cpp
+
+libclanGL_la_LIBADD = \
+  ../Display/libclanDisplay.la \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la \
+  $(xlibs)
 
 libclanGL_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)

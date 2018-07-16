@@ -20,7 +20,12 @@ surface_sdl.cpp \
 surface_sdl.h
 
 libclanSDL_la_CXXFLAGS = $(SDL_CFLAGS)
-libclanSDL_la_LIBADD   = $(SDL_LIBS)
+
+libclanSDL_la_LIBADD = \
+  ../Display/libclanDisplay.la \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la \
+  $(SDL_LIBS)
 
 libclanSDL_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)

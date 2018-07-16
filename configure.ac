@@ -458,7 +458,7 @@ dnl ----------------------------------------------------
 CXXFLAGS="$CXXFLAGS -I\$(top_srcdir)/Sources"
 
 # Modules which will be build
-ClanLib_Modules="Application"
+ClanLib_Modules=""
 ClanLib_pkgconfig="clanApp.pc"
 
 # API header files for the Modules which will be installed
@@ -467,7 +467,8 @@ ClanLib_API_Modules="$ClanLib_API_Modules \$(clanApp_includes)"
 # Default examples which will be build
 ClanLib_Examples="Directory Minimum Resources ResourcesCustom Signals ThreadSync XML Zip"
 
-CLANLIB_ENABLE_MODULES([Core Signals])
+CLANLIB_ENABLE_MODULES([Signals Core])
+ClanLib_Modules="$ClanLib_Modules Application"
 
 if test "$enable_clanDisplay" = "yes"; then
     CLANLIB_ENABLE_MODULES(Display)

@@ -13,7 +13,11 @@ menu_silver.cpp      menu_node_silver.cpp	menu_item_silver.cpp \
 treeitem_silver.cpp	treeview_silver.cpp \
 treeitem_silver.h	treeview_silver.h
 
-
+libclanGUIStyleSilver_la_LIBADD = \
+  ../GUI/libclanGUI.la \
+  ../Display/libclanDisplay.la \
+  ../Signals/libclanSignals.la \
+  ../Core/libclanCore.la
 
 libclanGUIStyleSilver_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)

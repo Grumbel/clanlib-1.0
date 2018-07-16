@@ -126,7 +126,9 @@ IOData/Unix/directory_scanner_unix.cpp
 endif
 
 # FIXME: Hardcoding these here might not be a good idea
-libclanCore_la_LIBADD = @LIBPTHREAD@
+libclanCore_la_LIBADD = \
+  ../Signals/libclanSignals.la \
+  @LIBPTHREAD@ -ldl
 
 libclanCore_la_LDFLAGS = \
   -version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LDFLAGS_LT_RELEASE)
