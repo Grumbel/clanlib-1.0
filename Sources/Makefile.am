@@ -10,6 +10,7 @@ DIST_SUBDIRS = \
   GUIStyleSilver \
   MikMod         \
   Network        \
+  Signals        \
   Sound          \
   SDL            \
   Vorbis
