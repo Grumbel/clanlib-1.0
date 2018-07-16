@@ -225,9 +225,6 @@ void ReferenceDocs::parse_compounddef(CL_DomElement compounddef)
 	class_file << "--></STYLE>" << std::endl;
 	class_file << "</HEAD>" << std::endl;
 	class_file << "<body bgcolor=white text=black link=blue vlink=#800080>" << std::endl;
-	class_file << "<center>" << std::endl;
-	class_file << "<img src=\"http://clanlib.org/gfx/clanlib.png\">" << std::endl;
-	class_file << "</center>" << std::endl;
 	class_file << "<!-- clanlib header end -->" << std::endl;
 	class_file << "<center>" << std::endl;
 	class_file << "<p>" << std::endl;
@@ -473,9 +470,6 @@ std::string ReferenceDocs::parse_memberdef(const std::string &class_name, const 
 	function_file << "--></STYLE>" << std::endl;
 	function_file << "</HEAD>" << std::endl;
 	function_file << "<body bgcolor=white text=black link=blue vlink=#800080>" << std::endl;
-	function_file << "<center>" << std::endl;
-	function_file << "<img src=\"http://clanlib.org/gfx/clanlib.png\">" << std::endl;
-	function_file << "</center>" << std::endl;
 	function_file << "<!-- clanlib header end -->" << std::endl;
 	function_file << "<center>" << std::endl;
 	function_file << "<p>" << std::endl;
@@ -695,9 +689,6 @@ void ReferenceDocs::parse_groupedclasses()
 	function_file << "--></STYLE>" << std::endl;
 	function_file << "</HEAD>" << std::endl;
 	function_file << "<body bgcolor=white text=black link=blue vlink=#800080>" << std::endl;
-	function_file << "<center>" << std::endl;
-	function_file << "<img src=\"http://clanlib.org/gfx/clanlib.png\">" << std::endl;
-	function_file << "</center>" << std::endl;
 	function_file << "<!-- clanlib header end -->" << std::endl;
 	function_file << "<center>" << std::endl;
 	function_file << "<p>" << std::endl;
@@ -879,9 +870,6 @@ void ReferenceDocs::parse_allclasses()
 	function_file << "--></STYLE>" << std::endl;
 	function_file << "</HEAD>" << std::endl;
 	function_file << "<body bgcolor=white text=black link=blue vlink=#800080>" << std::endl;
-	function_file << "<center>" << std::endl;
-	function_file << "<img src=\"http://clanlib.org/gfx/clanlib.png\">" << std::endl;
-	function_file << "</center>" << std::endl;
 	function_file << "<!-- clanlib header end -->" << std::endl;
 	function_file << "<center>" << std::endl;
 	function_file << "<p>" << std::endl;
@@ -995,9 +983,6 @@ void ReferenceDocs::parse_indexedclasses()
 	function_file << "--></STYLE>" << std::endl;
 	function_file << "</HEAD>" << std::endl;
 	function_file << "<body bgcolor=white text=black link=blue vlink=#800080>" << std::endl;
-	function_file << "<center>" << std::endl;
-	function_file << "<img src=\"http://clanlib.org/gfx/clanlib.png\">" << std::endl;
-	function_file << "</center>" << std::endl;
 	function_file << "<!-- clanlib header end -->" << std::endl;
 	function_file << "<center>" << std::endl;
 	function_file << "<p>" << std::endl;

@@ -41,7 +41,7 @@
             <table cellspacing="0" cellpadding="0" border="0" width="100%">
               <tr>
                 <td align="center">
-                  <h1><a href="http://www.clanlib.org"><img style="border-style: none; padding-right: 130px;" src="http://clanlib.org/gfx/clanlib.png" alt="ClanLib" /></a></h1>
+                  <h1><a href="http://www.clanlib.org">ClanLib</a></h1>
                 </td>
               </tr>
             </table>
