@@ -861,7 +861,7 @@ sub print_class {
       
       my $str;
       my $cur_also;
-      foreach $cur_also (keys %see_also)
+      foreach $cur_also (sort keys %see_also)
       {
         $str .= " | " if ($str ne "");
         $str .= $see_also{$cur_also};
