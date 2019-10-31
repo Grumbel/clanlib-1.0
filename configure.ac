@@ -321,7 +321,7 @@ if test "$enable_clanDisplay" != "no"; then
 
         PKG_CHECK_MODULES([SDL_GFX], [SDL_gfx],
             [SDL_LIBS="$SDL_LIBS $SDL_GFX_LIBS"
-             SDL_CFLAGS="$SDL_LIBS $SDL_GFX_CFLAGS"
+             SDL_CFLAGS="$SDL_CFLAGS $SDL_GFX_CFLAGS"
              AC_DEFINE(HAVE_LIBSDL_GFX)],
             [if test "$use_sdl_gfx" = "auto"; then
                 AC_MSG_WARN([SDL_gfx not found, clanSDL will not be able to use scaling and rotation!])
