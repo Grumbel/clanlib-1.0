@@ -1,3 +1,7 @@
+> This repository is an historical archive of ClanLib-1.0.0 along with
+> some patches to keep it compilable on modern Linux. The latest
+> versions of ClanLib can be found at: https://github.com/sphair/ClanLib
+
 Welcome
 -------
 Welcome to ClanLib, a multi-platform game development library.
