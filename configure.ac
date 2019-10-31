@@ -318,9 +318,11 @@ if test "$enable_clanDisplay" != "no"; then
         if test "$use_sdl_gfx" != "no"; then
         OLDLIBS="$LIBS"
         LIBS="$SDL_LIBS $LIBS"
-        AC_CHECK_LIB(SDL_gfx, zoomSurface, 
-            [SDL_LIBS="$SDL_LIBS -lSDL_gfx"
-             AC_DEFINE(HAVE_LIBSDL_GFX)], 
+
+        PKG_CHECK_MODULES([SDL_GFX], [SDL_gfx],
+            [SDL_LIBS="$SDL_LIBS $SDL_GFX_LIBS"
+             SDL_CFLAGS="$SDL_LIBS $SDL_GFX_CFLAGS"
+             AC_DEFINE(HAVE_LIBSDL_GFX)],
             [if test "$use_sdl_gfx" = "auto"; then
                 AC_MSG_WARN([SDL_gfx not found, clanSDL will not be able to use scaling and rotation!])
              else
