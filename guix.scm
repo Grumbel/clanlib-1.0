@@ -17,45 +17,38 @@
 ;;    misrepresented as being the original software.
 ;; 3. This notice may not be removed or altered from any source distribution.
 
-(use-modules (ice-9 popen)
-             (ice-9 rdelim)
-             (guix build utils)
-             (guix build-system gnu)
-             (guix git-download)
-             (guix gexp)
-             (guix licenses)
+(set! %load-path
+  (cons* "/ipfs/QmUnzfxrKWTapKvTaGcux6Bb6cTP9ChWy1JxVVvPQYSw78/guix-cocfree_0.0.0-54-g6e9f20d"
+         %load-path))
+
+(use-modules (guix build-system gnu)
+             ((guix licenses) #:prefix license:)
              (guix packages)
              (gnu packages linux)
              (gnu packages autotools)
              (gnu packages gl)
+             (gnu packages perl)
              (gnu packages pkg-config)
              (gnu packages image)
              (gnu packages sdl)
              (gnu packages xiph)
-             (gnu packages xorg))
+             (gnu packages xorg)
+             (guix-cocfree utils))
 
 (define %source-dir (dirname (current-filename)))
-
-(define current-commit
-  (with-directory-excursion %source-dir
-                            (let* ((port   (open-input-pipe "git describe --tags"))
-                                   (output (read-line port)))
-                              (close-pipe port)
-                              (string-trim-right output #\newline))))
 
 (define-public clanlib-1.0
   (package
    (name "clanlib-1.0")
-   (version current-commit)
-   (source (local-file %source-dir
-                       #:recursive? #t
-                       #:select? (git-predicate %source-dir)))
+   (version (version-from-source %source-dir))
+   (source (source-from-source %source-dir))
    (build-system gnu-build-system)
    (native-inputs
     `(("autoconf" ,autoconf)
       ("automake" ,automake)
       ("libtool" ,libtool)
-      ("pkg-config" ,pkg-config)))
+      ("pkg-config" ,pkg-config)
+      ("perl" ,perl)))
    (inputs
     `(("libpng" ,libpng)
       ("libjpeg" ,libjpeg)
@@ -69,9 +62,6 @@
       ("alsa-lib" ,alsa-lib)
       ("mesa" ,mesa)
       ("glu" ,glu)))
-   (arguments
-    `(#:tests? #f
-      #:configure-flags '("--disable-docs")))
    (synopsis "ClanLib game SDK development files")
    (description "ClanLib is a multi-platform software development kit,
 with an emphasis on game development.
@@ -87,7 +77,7 @@ On the other hand, ClanLib also tries to be a service-minded SDK.  In
 other words, the developers have put great effort into designing the
 API, to ensure ClanLib's ease of use - while maintaining its power.")
    (home-page "https://gitlab.com/grumbel/clanlib-1.0/")
-   (license zlib)))
+   (license license:zlib)))
 
 clanlib-1.0
 
