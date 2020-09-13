@@ -18,7 +18,7 @@
 ;; 3. This notice may not be removed or altered from any source distribution.
 
 (set! %load-path
-  (cons* "/ipfs/QmUnzfxrKWTapKvTaGcux6Bb6cTP9ChWy1JxVVvPQYSw78/guix-cocfree_0.0.0-54-g6e9f20d"
+  (cons* "/ipfs/QmdrwuaArAXmKGPY3oEoNpxTp7EUSKetXAVGBt67nqo54X/guix-cocfree_0.0.0-59-gd79b2bf"
          %load-path))
 
 (use-modules (guix build-system gnu)
@@ -51,7 +51,7 @@
       ("perl" ,perl)))
    (inputs
     `(("libpng" ,libpng)
-      ("libjpeg" ,libjpeg)
+      ("libjpeg-turbo" ,libjpeg-turbo)
       ("sdl" ,sdl)
       ("sdl-gfx" ,sdl-gfx)
       ("libmikmod" ,libmikmod)
@@ -59,7 +59,11 @@
       ("libogg" ,libogg)
       ("libxi" ,libxi)
       ("libxmu" ,libxmu)
-      ("alsa-lib" ,alsa-lib)
+      ("alsa-lib" ,alsa-lib)))
+   (propagated-inputs
+    `(;; ClanLib/Display/keys.h requires X11/keysym.h
+      ("xorgproto" ,xorgproto)
+      ;; ClanLib/gl.h depends on GL/gl.h and GL/glu.h
       ("mesa" ,mesa)
       ("glu" ,glu)))
    (synopsis "ClanLib game SDK development files")
