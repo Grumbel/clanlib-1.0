@@ -191,6 +191,9 @@ int CL_Font_Target_Sprite::get_height() const
 
 bool CL_Font_Target_Sprite::is_glyph(unsigned int chr) const
 {
+        if (!(chr < char_to_glyph_map.size()))
+		return false;
+
 	if (char_to_glyph_map[chr] == static_cast<unsigned int>(-1))
 		return false;
 	
