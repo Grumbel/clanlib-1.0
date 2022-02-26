@@ -31,8 +31,6 @@ rec {
               pkgs.SDL
               pkgs.SDL_gfx
               pkgs.alsa-lib
-              pkgs.libGL
-              pkgs.libGLU
               pkgs.libjpeg
               pkgs.libmikmod
               pkgs.libogg
@@ -42,6 +40,12 @@ rec {
               pkgs.xorg.libXi
               pkgs.xorg.libXmu
               pkgs.xorg.libXxf86vm
+            ];
+            propagatedBuildInputs = [
+              pkgs.xorg.xorgproto
+              pkgs.xorg.libX11
+              pkgs.libGL
+              pkgs.libGLU
             ];
            };
         };
