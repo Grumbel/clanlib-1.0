@@ -36,17 +36,6 @@
 #include <pthread.h>
 #include "mutex_pthread.h"
 
-// We need to do this because the posix threads library under linux obviously
-// suck:
-extern "C"
-{
-#if defined(__APPLE__) || defined (__FreeBSD__) || defined (__FreeBSD_kernel__) || defined(__OpenBSD__)
-	int pthread_mutexattr_settype(pthread_mutexattr_t *attr, int kind);
-#else
-	int pthread_mutexattr_setkind_np(pthread_mutexattr_t *attr, int kind);
-#endif
-}
-
 CL_Mutex *CL_Mutex::create()
 {
 	return new CL_Mutex;
@@ -60,16 +49,7 @@ CL_Mutex::CL_Mutex()
 	pthread_mutexattr_t attr;
 	pthread_mutexattr_init(&attr);
 
-#if defined(__APPLE__) || defined (__FreeBSD__) || defined (__FreeBSD_kernel__) || defined(__OpenBSD__)
         pthread_mutexattr_settype(&attr, PTHREAD_MUTEX_RECURSIVE);
-#else
-#if PTHREAD_MUTEX_RECURSIVE_NP
-// cygwin
-	pthread_mutexattr_setkind_np(&attr, PTHREAD_MUTEX_RECURSIVE);
-#else
-	pthread_mutexattr_setkind_np(&attr, PTHREAD_MUTEX_RECURSIVE_NP);
-#endif
-#endif
 	pthread_mutex_init(&impl->mutex, &attr);
 	pthread_mutexattr_destroy(&attr);
 
