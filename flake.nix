@@ -10,8 +10,8 @@ rec {
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-      in rec {
-        packages = flake-utils.lib.flattenTree {
+      in {
+        packages = flake-utils.lib.flattenTree rec {
           clanlib = pkgs.stdenv.mkDerivation {
             pname = "clanlib";
             version = "1.0.0";
@@ -45,8 +45,9 @@ rec {
               pkgs.libGL
               pkgs.libGLU
             ];
-           };
+          };
+          default = clanlib;
         };
-        defaultPackage = packages.clanlib;
-      });
+      }
+    );
 }
