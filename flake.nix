@@ -1,8 +1,8 @@
-rec {
+{
   description = "ClanLib game SDK development files";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -11,42 +11,49 @@ rec {
       let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
-        packages = flake-utils.lib.flattenTree rec {
+        packages = rec {
+          default = clanlib;
+
           clanlib = pkgs.stdenv.mkDerivation {
             pname = "clanlib";
             version = "1.0.0";
+
             src = nixpkgs.lib.cleanSource ./.;
+
             enableParallelBuilding = true;
+
             preConfigure = "./autogen.sh";
-            nativeBuildInputs = [
-              pkgs.autoconf
-              pkgs.automake
-              pkgs.gcc
-              pkgs.libtool
-              pkgs.perl
-              pkgs.pkgconfig
+
+            nativeBuildInputs = with pkgs; [
+              autoconf
+              automake
+              gcc
+              libtool
+              perl
+              pkgconfig
             ];
-            buildInputs = [
-              pkgs.SDL
-              pkgs.SDL_gfx
-              pkgs.alsa-lib
-              pkgs.libjpeg
-              pkgs.libmikmod
-              pkgs.libogg
-              pkgs.libpng
-              pkgs.libvorbis
-              pkgs.xorg.libXi
-              pkgs.xorg.libXmu
-              pkgs.xorg.libXxf86vm
+
+            buildInputs = with pkgs; [
+              SDL
+              SDL_gfx
+              alsa-lib
+              libjpeg
+              libmikmod
+              libogg
+              libpng
+              libvorbis
+              xorg.libXi
+              xorg.libXmu
+              xorg.libXxf86vm
             ];
-            propagatedBuildInputs = [
-              pkgs.xorg.xorgproto
-              pkgs.xorg.libX11
-              pkgs.libGL
-              pkgs.libGLU
+
+            propagatedBuildInputs = with pkgs; [
+              xorg.xorgproto
+              xorg.libX11
+              libGL
+              libGLU
             ];
           };
-          default = clanlib;
         };
       }
     );
